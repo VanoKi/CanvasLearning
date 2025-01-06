@@ -1,27 +1,20 @@
 function draw() {
-    const canvas = document.querySelector('#tutorial')
-    if (canvas.getContext) {
-        const ctx = canvas.getContext('2d')
-        var rectangle = new Path2D();
-        rectangle.rect(10, 10, 50, 50);
-
-        var circle = new Path2D();
-        circle.moveTo(125, 35);
-        circle.arc(100, 35, 25, 0, 2 * Math.PI);
-
-        ctx.stroke(rectangle);
-        ctx.fill(circle);
-    } else {
-        console.log('unsupported')
+    var ctx = document.querySelector("#tutorial").getContext("2d");
+    ctx.fillStyle = "#FD0";
+    ctx.fillRect(0, 0, 75, 75);
+    ctx.fillStyle = "#6C0";
+    ctx.fillRect(75, 0, 75, 75);
+    ctx.fillStyle = "#09F";
+    ctx.fillRect(0, 75, 75, 75);
+    ctx.fillStyle = "#F30";
+    ctx.fillRect(75, 75, 75, 75);
+    ctx.fillStyle = "#FFF";
+    // устанавливаем значение прозрачности
+    ctx.globalAlpha = 0.2;
+    // Рисуем полупрозрачные круги
+    for (i = 0; i < 7; i++) {
+        ctx.beginPath();
+        ctx.arc(75, 75, 10 + 10 * i, 0, Math.PI * 2, true);
+        ctx.fill();
     }
-}
-
-function roundedRect(ctx, x, y, width, height, radius) {
-    ctx.beginPath();
-    ctx.moveTo(x, y + radius);
-    ctx.arcTo(x, y + height, x + radius, y + height, radius);
-    ctx.arcTo(x + width, y + height, x + width, y + height - radius, radius);
-    ctx.arcTo(x + width, y, x + width - radius, y, radius);
-    ctx.arcTo(x, y, x, y + radius, radius);
-    ctx.stroke();
 }
