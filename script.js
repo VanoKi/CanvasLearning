@@ -1,24 +1,15 @@
 function draw() {
     const ctx = document.querySelector("#tutorial").getContext("2d");
-    var lineCap = ["butt", "round", "square"];
-
-    // Draw guides
-    ctx.strokeStyle = "#09f";
-    ctx.beginPath();
-    ctx.moveTo(10, 10);
-    ctx.lineTo(140, 10);
-    ctx.moveTo(10, 140);
-    ctx.lineTo(140, 140);
-    ctx.stroke();
-
-    // Draw lines
-    ctx.strokeStyle = "black";
-    for (var i = 0; i < lineCap.length; i++) {
-        ctx.lineWidth = 15;
-        ctx.lineCap = lineCap[i];
+    var lineJoin = ["round", "bevel", "miter"];
+    ctx.lineWidth = 10;
+    for (var i = 0; i < lineJoin.length; i++) {
+        ctx.lineJoin = lineJoin[i];
         ctx.beginPath();
-        ctx.moveTo(25 + i * 50, 10);
-        ctx.lineTo(25 + i * 50, 140);
+        ctx.moveTo(-5, 5 + i * 40);
+        ctx.lineTo(35, 45 + i * 40);
+        ctx.lineTo(75, 5 + i * 40);
+        ctx.lineTo(115, 45 + i * 40);
+        ctx.lineTo(155, 5 + i * 40);
         ctx.stroke();
     }
 }
